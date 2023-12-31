@@ -2,7 +2,7 @@ public class second {
     public static void main(String[] args) {
         byte[][] arr = new byte[][] {
                 { 1, 2, 1, 3 },
-                { 1, 3, 1, 2 },
+                { 1, 3, 1, 2 },                 //створення матриць
                 { 1, 2, 1, 3 }
         };
         byte[][] arr1 = new byte[][] {
@@ -11,10 +11,11 @@ public class second {
                 { 2, 6, 2, 4 },
                 { 2, 4, 2, 6 }
         };
+        //розрахунок розмірності матриці результату
         int a = arr.length + arr1.length;
         int b = arr[0].length + arr1[0].length;
         byte[][] C = new byte[a][b];
-
+        //заповнення матриці результату 
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < b; j++) {
                 if (i < arr.length && j < arr[0].length) {
@@ -25,13 +26,15 @@ public class second {
                     C[i][j] = 0;
             }
         }
+        //виведення матриці результату
         for (int i = 0; i < C.length; i++) {
             for (int j = 0; j < C[0].length; j++) {
                 System.out.print(C[i][j] + " ");
             }
             System.out.println();
         }
-
+        //Обчислюємо суму найбільших елементів в стовпцях матриці з непарними номерами
+        //та найменших елементів в стовпцях матриці з парними номерами
         int mxsum = 0, mnsum = 0;
         for (int i = 0; i < C.length; i++) {
             int min = C[i][0], max = C[i][1];
