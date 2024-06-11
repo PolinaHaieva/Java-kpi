@@ -1,41 +1,45 @@
-import java.util.List;
-import java.util.Arrays;
+// This program demonstrates the implementation of a singly linked list in Java.
+// It defines an interface SinglyLinkedListCollection with methods for basic operations on the list,
+// such as adding an item, removing an item, checking if an item is present, getting the size, and clearing the list.
+// The SinglyLinkedList class implements this interface and provides the implementation for each method.
 
+// Interface defining operations for a singly linked list
 interface SinglyLinkedListCollection<T> {
-    void add(T item);
-
-    void remove(T item);
-
-    boolean contains(T item);
-
-    int size();
-
-    void clear();
+    void add(T item); // Add an item to the list
+    void remove(T item); // Remove an item from the list
+    boolean contains(T item); // Check if the list contains an item
+    int size(); // Get the size of the list
+    void clear(); // Clear all items from the list
 }
 
+// Node class representing an element in a singly linked list
 class Node<T> {
-    T data;
-    Node<T> next;
+    T data; // Data stored in the node
+    Node<T> next; // Reference to the next node in the list
 
     Node(T data) {
         this.data = data;
     }
 }
 
+// Implementation of a singly linked list that adheres to the SinglyLinkedListCollection interface
 class SinglyLinkedList<T> implements SinglyLinkedListCollection<T> {
-    private Node<T> head;
-    private int size;
+    private Node<T> head; // Reference to the first node in the list
+    private int size; // Size of the list
 
+    // Constructor to initialize an empty singly linked list
     public SinglyLinkedList() {
         head = null;
         size = 0;
     }
 
+    // Constructor to initialize a singly linked list with a single item
     public SinglyLinkedList(T item) {
         head = new Node<>(item);
         size = 1;
     }
 
+    // Constructor to initialize a singly linked list with items from a collection
     public SinglyLinkedList(Iterable<T> collection) {
         head = null;
         size = 0;
@@ -44,6 +48,7 @@ class SinglyLinkedList<T> implements SinglyLinkedListCollection<T> {
         }
     }
 
+    // Method to add an item to the end of the list
     @Override
     public void add(T item) {
         Node<T> newNode = new Node<>(item);
@@ -59,6 +64,7 @@ class SinglyLinkedList<T> implements SinglyLinkedListCollection<T> {
         size++;
     }
 
+    // Method to remove an item from the list
     @Override
     public void remove(T item) {
         if (head == null) {
@@ -82,6 +88,7 @@ class SinglyLinkedList<T> implements SinglyLinkedListCollection<T> {
         }
     }
 
+    // Method to check if the list contains a given item
     @Override
     public boolean contains(T item) {
         Node<T> current = head;
@@ -94,17 +101,20 @@ class SinglyLinkedList<T> implements SinglyLinkedListCollection<T> {
         return false;
     }
 
+    // Method to get the size of the list
     @Override
     public int size() {
         return size;
     }
 
+    // Method to clear all items from the list
     @Override
     public void clear() {
         head = null;
         size = 0;
     }
 
+    // Method to convert the list to a string representation
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
@@ -121,8 +131,10 @@ class SinglyLinkedList<T> implements SinglyLinkedListCollection<T> {
     }
 }
 
+// Main class to test the SinglyLinkedList implementation
 public class seventh {
     public static void main(String[] args) {
+        // Testing the SinglyLinkedList class with different types of elements
         SinglyLinkedList<Integer> list1 = new SinglyLinkedList<>();
         list1.add(1);
         list1.add(2);
